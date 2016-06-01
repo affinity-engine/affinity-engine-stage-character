@@ -1,0 +1,8 @@
+{{#each expressionContainers as |expressionContainer|}}
+  {{ember-theater-director-character-expression
+    expression=expressionContainer.expression
+    directable=expressionContainer.directable
+    theaterId=theaterId
+    windowId=windowId
+  }}
+{{/each}}
