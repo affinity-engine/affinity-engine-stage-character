@@ -24,7 +24,7 @@ const configurablePriority = [
 
 export default Component.extend(DirectableComponentMixin, TransitionableComponentMixin, {
   classNames: ['et-character-expression-container'],
-  hook: 'expression-direction',
+  hook: 'expression_direction',
 
   translator: service('ember-theater/translator'),
 

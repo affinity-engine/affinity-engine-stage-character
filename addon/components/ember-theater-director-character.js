@@ -34,7 +34,7 @@ export default Component.extend(DirectableComponentMixin, TransitionableComponen
   layout,
 
   classNames: ['et-character'],
-  hook: 'character-direction',
+  hook: 'character_direction',
 
   config: multiton('ember-theater/config', 'theaterId'),
 
