@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import layout from '../templates/components/ember-theater-director-character';
+import layout from '../templates/components/ember-theater-director-direction-character';
 import multiton from 'ember-multiton-service';
 import { WindowResizeMixin, configurable, deepArrayConfigurable } from 'ember-theater';
 import { Directable, DirectableComponentMixin, TransitionableComponentMixin, TransitionableComponentAutoMixin } from 'ember-theater-director';

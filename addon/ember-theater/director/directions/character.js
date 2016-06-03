@@ -12,7 +12,7 @@ const {
 } = Ember;
 
 export default Direction.extend({
-  componentPath: 'ember-theater-director-character',
+  componentPath: 'ember-theater-director-direction-character',
   layer: 'theater.stage.foreground.character',
 
   config: multiton('ember-theater/config', 'theaterId'),
@@ -138,13 +138,18 @@ export default Direction.extend({
   },
 
   _findExpression(fixtureOrIdOrAlias) {
+    const preloader = get(this, 'preloader');
     const character = get(this, 'attrs.fixture');
     const fixtureOrId = get(character, `expressions.${fixtureOrIdOrAlias}`) || fixtureOrIdOrAlias;
     const fixtureStore = get(this, 'fixtureStore');
     const expression = typeOf(fixtureOrId) === 'object' ? fixtureOrId : fixtureStore.find('expressions', fixtureOrId);
-    const imageId = get(this, 'preloader').idFor(expression, 'src');
 
-    set(expression, 'imageId', imageId);
+    if (!get(preloader, 'isPlaceholder')) {
+      const imageId = preloader.idFor(expression, 'src');
+      const imageElement = preloader.getElement(imageId);
+
+      set(expression, 'imageElement', imageElement);
+    }
 
     return expression;
   },
