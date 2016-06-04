@@ -129,13 +129,11 @@ export default Direction.extend({
     return this;
   },
 
-  Text(text) {
-    this._removeFromQueueIfDefault();
-
-    const direction = this._createDirection('text');
-
-    return direction._setup(text, this);
-  },
+  _handleChain: on('willChainDirection', function(name) {
+    if (name === 'text') {
+      this._removeFromQueueIfDefault();
+    }
+  }),
 
   _findExpression(fixtureOrIdOrAlias) {
     const preloader = get(this, 'preloader');
