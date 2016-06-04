@@ -27,14 +27,14 @@ moduleForComponent('ember-theater-director-character', 'Integration | Component 
   }
 });
 
-const configurablePriority = [
+const configurationTiers = [
   'directable.attrs',
   'directable.attrs.fixture',
   'config.attrs.director.character',
   'config.attrs.globals'
 ];
 
-configurablePriority.forEach((priority) => {
+configurationTiers.forEach((priority) => {
   test(`height style is defined in ${priority}`, function(assert) {
     assert.expect(1);
 

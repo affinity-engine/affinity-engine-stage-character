@@ -13,7 +13,7 @@ const {
 
 const { inject: { service } } = Ember;
 
-const configurablePriority = [
+const configurationTiers = [
   'directable.attrs',
   'expression.expression',
   'expression',
@@ -29,12 +29,12 @@ export default Component.extend(DirectableComponentMixin, TransitionableComponen
 
   config: multiton('ember-theater/config', 'theaterId'),
 
-  caption: configurable(configurablePriority, 'caption'),
-  imageElement: configurable(configurablePriority, 'imageElement'),
-  resolve: configurable(configurablePriority, 'resolve'),
-  src: configurable(configurablePriority, 'src'),
-  transitionIn: deepConfigurable(configurablePriority, 'transitionIn'),
-  transitionOut: deepConfigurable(configurablePriority, 'transitionOut'),
+  caption: configurable(configurationTiers, 'caption'),
+  imageElement: configurable(configurationTiers, 'imageElement'),
+  resolve: configurable(configurationTiers, 'resolve'),
+  src: configurable(configurationTiers, 'src'),
+  transitionIn: deepConfigurable(configurationTiers, 'transitionIn'),
+  transitionOut: deepConfigurable(configurationTiers, 'transitionOut'),
 
   captionTranslation: computed('expression.id', 'caption', {
     get() {

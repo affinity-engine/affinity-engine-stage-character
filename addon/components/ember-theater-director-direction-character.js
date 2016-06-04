@@ -23,7 +23,7 @@ const {
 
 const { RSVP: { Promise } } = Ember;
 
-const configurablePriority = [
+const configurationTiers = [
   'directable.attrs',
   'directable.attrs.fixture',
   'config.attrs.director.character',
@@ -40,9 +40,9 @@ export default Component.extend(DirectableComponentMixin, TransitionableComponen
 
   expressionContainers: computed(() => Ember.A([])),
 
-  expression: configurable(configurablePriority, 'expression'),
-  height: configurable(configurablePriority, 'height'),
-  transitions: deepArrayConfigurable(configurablePriority, 'directable.attrs.transitions', 'transition'),
+  expression: configurable(configurationTiers, 'expression'),
+  height: configurable(configurationTiers, 'height'),
+  transitions: deepArrayConfigurable(configurationTiers, 'directable.attrs.transitions', 'transition'),
 
   crossFade({ expression, transitionIn, transitionOut }) {
     return new Promise((resolve) => {

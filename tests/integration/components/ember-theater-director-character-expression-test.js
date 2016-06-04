@@ -28,7 +28,7 @@ moduleForComponent('ember-theater-director-character-expression', 'Integration |
   }
 });
 
-const configurablePriority = [
+const configurationTiers = [
   'directable.attrs',
   'expression.expression',
   'expression',
@@ -36,7 +36,7 @@ const configurablePriority = [
   'config.attrs.globals'
 ];
 
-configurablePriority.forEach((priority) => {
+configurationTiers.forEach((priority) => {
   test(`imageElement is assigned by priority ${priority}`, function(assert) {
     assert.expect(1);
 
