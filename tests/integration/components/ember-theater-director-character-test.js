@@ -1,24 +1,49 @@
+import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import { initialize as initializeHook } from 'ember-hook';
+import { initialize as initializeMultitons } from 'ember-multiton-service';
+import { initializeQUnitAssertions } from 'ember-message-bus';
+import { initialize as initializeDirector } from 'ember-theater-director';
+import { deepStub } from 'ember-theater';
+import { hook } from 'ember-hook';
 
-moduleForComponent('ember-theater-director-character', 'Integration | Component | ember theater director character', {
-  integration: true
+const {
+  getOwner,
+  getProperties,
+  setProperties
+} = Ember;
+
+moduleForComponent('ember-theater-director-character', 'Integration | Component | ember theater director character expression', {
+  integration: true,
+
+  beforeEach() {
+    const appInstance = getOwner(this);
+
+    initializeHook();
+    initializeMultitons(appInstance);
+    initializeQUnitAssertions(appInstance);
+    initializeDirector(appInstance);
+  }
 });
 
-test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+const configurablePriority = [
+  'directable.attrs',
+  'directable.attrs.fixture',
+  'config.attrs.director.character',
+  'config.attrs.globals'
+];
 
-  this.render(hbs`{{ember-theater-director-character}}`);
+configurablePriority.forEach((priority) => {
+  test(`height style is defined in ${priority}`, function(assert) {
+    assert.expect(1);
 
-  assert.equal(this.$().text().trim(), '');
+    const stub = deepStub(priority, 'height', 63);
 
-  // Template block usage:
-  this.render(hbs`
-    {{#ember-theater-director-character}}
-      template block text
-    {{/ember-theater-director-character}}
-  `);
+    setProperties(this, getProperties(stub, 'config', 'directable'));
 
-  assert.equal(this.$().text().trim(), 'template block text');
+    this.render(hbs`{{ember-theater-director-direction-character directable=directable config=config}}`);
+
+    assert.equal(this.$(hook('character_direction')).attr('style'), 'height: 63%; ', 'height is set correctly');
+  });
 });
