@@ -1,7 +1,7 @@
-import Character from 'ember-theater-director-character/ember-theater/director/directions/character';
+import Character from 'affinity-engine-stage-character/affinity-engine/stage/directions/character';
 import { module, test } from 'qunit';
 
-module('Unit | Ember Theater Direction | character');
+module('Unit | Affinity Engine Direction | character');
 
 // Replace this with your real tests.
 test('it works', function(assert) {

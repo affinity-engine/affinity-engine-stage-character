@@ -1,5 +1,5 @@
 {
-  "name": "ember-theater-director-character",
+  "name": "affinity-engine-stage-character",
   "dependencies": {
     "ember": "~2.5.0",
     "ember-cli-shims": "0.1.1",
