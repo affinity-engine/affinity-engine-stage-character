@@ -1,4 +1,4 @@
-import Character from 'affinity-engine-stage-character/affinity-engine/stage/directions/character';
+import Character from 'affinity-engine-stage-direction-character/affinity-engine/stage/directions/character';
 import { module, test } from 'qunit';
 
 module('Unit | Affinity Engine Direction | character');

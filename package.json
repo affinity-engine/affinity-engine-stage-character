@@ -1,7 +1,7 @@
 {
-  "name": "affinity-engine-stage-character",
+  "name": "affinity-engine-stage-direction-character",
   "version": "0.0.0",
-  "description": "Add characters to Affinity Engine Director",
+  "description": "Add characters to Affinity Engine Stage",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -11,7 +11,7 @@
     "start": "ember server",
     "test": "ember try:testall"
   },
-  "repository": "https://github.com/affinity-engine/affinity-engine-stage-character",
+  "repository": "https://github.com/affinity-engine/affinity-engine-stage-direction-character",
   "engines": {
     "node": ">= 0.10.0"
   },

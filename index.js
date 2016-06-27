@@ -2,5 +2,5 @@
 'use strict';
 
 module.exports = {
-  name: 'affinity-engine-stage-character'
+  name: 'affinity-engine-stage-direction-character'
 };
