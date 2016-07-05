@@ -2,7 +2,6 @@ import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { initialize as initializeHook } from 'ember-hook';
-import { initialize as initializeMultitons } from 'ember-multiton-service';
 import { initializeQUnitAssertions } from 'ember-message-bus';
 import { initialize as initializeDirector } from 'affinity-engine-stage';
 import { deepStub } from 'affinity-engine';
@@ -22,7 +21,6 @@ moduleForComponent('affinity-engine-stage-direction-character-expression', 'Inte
     const appInstance = getOwner(this);
 
     initializeHook();
-    initializeMultitons(appInstance);
     initializeQUnitAssertions(appInstance);
     initializeDirector(appInstance);
   }

@@ -36,9 +36,9 @@ export default Scene.extend({
     await bitsy3.position('left nudgeDown');
 
     await step();
-    const bitsy4 = await script.character('bitsy').expression('bitsy-happy').position('center');
+    const bitsy4 = await script.character('bitsy').expression('happy').position('center');
 
     await step();
-    await bitsy4.expression('bitsy-sad').position('right');
+    await bitsy4.expression('sad').position('right');
   }
 });

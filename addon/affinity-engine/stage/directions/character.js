@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { registrant } from 'affinity-engine';
 import { Direction } from 'affinity-engine-stage';
 import multiton from 'ember-multiton-service';
 
@@ -18,7 +19,7 @@ export default Direction.extend({
 
   config: multiton('affinity-engine/config', 'engineId'),
   fixtureStore: multiton('affinity-engine/fixture-store', 'engineId'),
-  preloader: multiton('affinity-engine/preloader', 'engineId'),
+  preloader: registrant('preloader'),
 
   _setup(fixtureOrId) {
     this._entryPoint();
