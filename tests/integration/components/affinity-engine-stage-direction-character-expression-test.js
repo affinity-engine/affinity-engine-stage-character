@@ -99,7 +99,7 @@ test('alt is set by the fixture id if no caption is present', function(assert) {
   set(this, 'translator', translator);
   set(this, 'expression', { id: 'foo' });
 
-  this.render(hbs`{{affinity-engine-stage-direction-character-expression expression=expression translator=translator}}`);
+  this.render(hbs`{{affinity-engine-stage-direction-character-expression expression=expression translator=translator engineId="foo" windowId="bar"}}`);
 
   assert.equal(this.$('img').attr('alt'), 'bar', 'alt is correct');
 });
