@@ -33,7 +33,7 @@ const configurationTiers = [
 export default Component.extend(DirectableComponentMixin, TransitionableComponentMixin, TransitionableComponentAutoMixin, WindowResizeMixin, {
   layout,
 
-  classNames: ['et-character'],
+  classNames: ['ae-character'],
   hook: 'character_direction',
 
   config: multiton('affinity-engine/config', 'engineId'),

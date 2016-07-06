@@ -1,0 +1,19 @@
+.ae-character {
+  @extend .ae-unselectable;
+  z-index: 10;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  .ae-character-expression-container {
+    position: absolute;
+    height: 100%;
+  }
+
+  .ae-character-expression {
+    position: absolute;
+    height: 100%;
+    transform: translateX(-50%);
+  }
+}

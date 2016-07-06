@@ -22,7 +22,7 @@ const configurationTiers = [
 ];
 
 export default Component.extend(DirectableComponentMixin, TransitionableComponentMixin, {
-  classNames: ['et-character-expression-container'],
+  classNames: ['ae-character-expression-container'],
   hook: 'expression_direction',
 
   translator: service('affinity-engine/translator'),
@@ -61,7 +61,7 @@ export default Component.extend(DirectableComponentMixin, TransitionableComponen
     const image = get(this, 'imageElement') || `<img src="${get(this, 'src')}">`;
     const $image = this.$(image).clone();
 
-    $image.addClass('et-character-expression');
+    $image.addClass('ae-character-expression');
     $image.attr('alt', captionTranslation);
 
     this.$().append($image);

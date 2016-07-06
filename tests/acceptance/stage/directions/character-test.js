@@ -50,22 +50,22 @@ test('Affinity Engine | Director | Directions | character', function(assert) {
     return step(75);
   }).then(() => {
     assert.equal($hook('character_direction').length, 5, 'characters are rendered with `position`');
-    assert.equal(Ember.$(`${hook('character_direction')}:nth(4)`).css('left'), '50%', '`position` positions the character');
+    assert.equal(Ember.$(`${hook('character_direction')}:nth(4)`).css('left'), '640px', '`position` positions the character');
 
     return step(150);
   }).then(() => {
     const $bitsy4 = Ember.$(`${hook('character_direction')}:nth(4)`);
 
-    assert.equal($bitsy4.css('left'), '20%', '`position` can accept multiple positions, Y');
-    assert.equal($bitsy4.css('bottom'), '-5%', '`position` can accept multiple positions, X');
+    assert.equal($bitsy4.css('left'), '256px', '`position` can accept multiple positions, Y');
+    assert.equal($bitsy4.css('bottom'), '-38.375px', '`position` can accept multiple positions, X');
 
     return step(75);
   }).then(() => {
     assert.ok(Ember.$(`${hook('expression_direction')}:nth(5) img`).attr('src').match('engine/characters/bitsy/happy.png'), '`expression` can adjust the expression before rendering');
 
-    return step(75);
+    return step(150);
   }).then(() => {
     assert.ok(Ember.$(`${hook('expression_direction')}:nth(5) img`).attr('src').match('engine/characters/bitsy/sad.png'), '`expression` can adjust the expression after rendering');
-    assert.equal(Ember.$(`${hook('character_direction')}:nth(5)`).css('left'), '80%', '`position` can be chained after expression');
+    assert.equal(Ember.$(`${hook('character_direction')}:nth(5)`).css('left'), '1024px', '`position` can be chained after expression');
   });
 });
