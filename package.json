@@ -19,6 +19,7 @@
   "license": "MIT",
   "devDependencies": {
     "affinity-engine": "git+https://github.com/affinity-engine/affinity-engine.git",
+    "affinity-engine-animator-velocity": "git+https://github.com/affinity-engine/affinity-engine-animator-velocity.git",
     "affinity-engine-curtain": "git+https://github.com/affinity-engine/affinity-engine-curtain.git",
     "affinity-engine-stage": "git+https://github.com/affinity-engine/affinity-engine-stage.git",
     "babel-eslint": "^6.0.4",

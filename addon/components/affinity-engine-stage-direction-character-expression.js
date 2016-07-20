@@ -7,8 +7,9 @@ const {
   Component,
   computed,
   get,
+  isPresent,
   observer,
-  on
+  run
 } = Ember;
 
 const { inject: { service } } = Ember;
@@ -36,27 +37,24 @@ export default Component.extend(DirectableComponentMixin, TransitionableComponen
   transitionIn: deepConfigurable(configurationTiers, 'transitionIn'),
   transitionOut: deepConfigurable(configurationTiers, 'transitionOut'),
 
-  captionTranslation: computed('expression.id', 'caption', {
-    get() {
-      const translation = get(this, 'caption') || `expressions.${get(this, 'expression.id')}`;
+  didInsertElement(...args) {
+    this._super(...args);
 
-      return get(this, 'translator').translate(translation);
-    }
-  }),
+    this._transitionInExpression();
+    this._insertImage();
+  },
 
-  transitionInExpression: on('didInsertElement', function() {
+  _transitionInExpression() {
     this.executeTransitionIn().then(() => {
-      get(this, 'resolve')();
+      run(() => {
+        const resolve = get(this, 'resolve');
+
+        if (isPresent(resolve)) { resolve(); }
+      });
     });
-  }),
+  },
 
-  image: computed('expression.$image', {
-    get() {
-      return get(this, 'expression.$image')[0];
-    }
-  }),
-
-  insertImage: on('didInsertElement', function() {
+  _insertImage() {
     const captionTranslation = get(this, 'captionTranslation');
     const image = get(this, 'imageElement') || `<img src="${get(this, 'src')}">`;
     const $image = this.$(image).clone();
@@ -65,6 +63,20 @@ export default Component.extend(DirectableComponentMixin, TransitionableComponen
     $image.attr('alt', captionTranslation);
 
     this.$().append($image);
+  },
+
+  captionTranslation: computed('expression.id', 'caption', {
+    get() {
+      const translation = get(this, 'caption') || `expressions.${get(this, 'expression.id')}`;
+
+      return get(this, 'translator').translate(translation);
+    }
+  }),
+
+  image: computed('expression.$image', {
+    get() {
+      return get(this, 'expression.$image')[0];
+    }
   }),
 
   changeCaption: observer('captionTranslation', function() {

@@ -19,7 +19,7 @@ export default Direction.extend({
 
   config: multiton('affinity-engine/config', 'engineId'),
   fixtureStore: multiton('affinity-engine/fixture-store', 'engineId'),
-  preloader: registrant('preloader'),
+  preloader: registrant('affinity-engine/preloader'),
 
   _setup(fixtureOrId) {
     this._entryPoint();
