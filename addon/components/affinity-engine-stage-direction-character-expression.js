@@ -23,8 +23,8 @@ const configurationTiers = [
 ];
 
 export default Component.extend(DirectableComponentMixin, TransitionableComponentMixin, {
-  classNames: ['ae-character-expression-container'],
-  hook: 'expression_direction',
+  classNames: ['ae-stage-direction-character-expression-container'],
+  hook: 'affinity_engine_stage_direction_expression',
 
   translator: service('affinity-engine/translator'),
 
@@ -59,7 +59,7 @@ export default Component.extend(DirectableComponentMixin, TransitionableComponen
     const image = get(this, 'imageElement') || `<img src="${get(this, 'src')}">`;
     const $image = this.$(image).clone();
 
-    $image.addClass('ae-character-expression');
+    $image.addClass('ae-stage-direction-character-expression');
     $image.attr('alt', captionTranslation);
 
     this.$().append($image);

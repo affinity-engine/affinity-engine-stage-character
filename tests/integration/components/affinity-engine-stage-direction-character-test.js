@@ -42,6 +42,6 @@ configurationTiers.forEach((priority) => {
 
     this.render(hbs`{{affinity-engine-stage-direction-character directable=directable config=config engineId="foo" windowId="bar"}}`);
 
-    assert.equal(this.$(hook('character_direction')).attr('style'), 'height: 63%; ', 'height is set correctly');
+    assert.equal(this.$(hook('affinity_engine_stage_direction_character')).attr('style'), 'height: 63%; ', 'height is set correctly');
   });
 });
