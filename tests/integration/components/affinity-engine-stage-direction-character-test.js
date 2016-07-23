@@ -36,7 +36,7 @@ configurationTiers.forEach((priority) => {
   test(`height style is defined in ${priority}`, function(assert) {
     assert.expect(1);
 
-    const stub = deepStub(priority, 'height', 63);
+    const stub = deepStub(priority, { height: 63 });
 
     setProperties(this, getProperties(stub, 'config', 'directable'));
 
