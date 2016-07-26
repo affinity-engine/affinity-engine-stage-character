@@ -28,8 +28,8 @@ moduleForComponent('affinity-engine-stage-direction-character', 'Integration | C
 const configurationTiers = [
   'directable.attrs',
   'directable.attrs.fixture',
-  'config.attrs.stage.character',
-  'config.attrs.globals'
+  'config.attrs.component.stage.direction.character',
+  'config.attrs'
 ];
 
 configurationTiers.forEach((priority) => {

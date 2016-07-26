@@ -30,8 +30,8 @@ const configurationTiers = [
   'directable.attrs',
   'expression.expression',
   'expression',
-  'config.attrs.stage.expression',
-  'config.attrs.globals'
+  'config.attrs.component.stage.direction.expression',
+  'config.attrs'
 ];
 
 configurationTiers.forEach((priority) => {

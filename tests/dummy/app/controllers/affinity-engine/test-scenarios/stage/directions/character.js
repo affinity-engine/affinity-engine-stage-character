@@ -6,16 +6,18 @@ const { Controller } = Ember;
 
 export default Controller.extend({
   config: {
-    globals: {
-      transition: {
-        effect: { opacity: 0.1 },
-        duration: 100
-      }
+    transition: {
+      effect: { opacity: 0.1 },
+      duration: 100
     },
-    stage: {
-      character: {
-        transition: {
-          duration: 1000
+    component: {
+      stage: {
+        direction: {
+          character: {
+            transition: {
+              duration: 1000
+            }
+          }
         }
       }
     }

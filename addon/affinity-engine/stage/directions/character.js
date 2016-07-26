@@ -107,10 +107,9 @@ export default Direction.extend({
 
   position(positions, duration = 0, options = {}) {
     const effect = positions.split(' ').reduce((aggregator, position) => {
-      const nextEffect = get(this, `fixture.positions.character.${position}`) ||
-        get(this, `fixture.positions.${position}`) ||
-        get(this, `config.attrs.stage.positions.character.${position}`) ||
-        get(this, `config.attrs.stage.positions.${position}`);
+      const nextEffect = get(this, `fixture.positions.${position}`) ||
+        get(this, `config.attrs.component.stage.direction.character.positions.${position}`) ||
+        get(this, `config.attrs.component.stage.positions.${position}`);
 
       return merge(aggregator, nextEffect);
     }, {});

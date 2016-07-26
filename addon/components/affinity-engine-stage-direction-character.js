@@ -26,8 +26,8 @@ const { RSVP: { Promise } } = Ember;
 const configurationTiers = [
   'directable.attrs',
   'directable.attrs.fixture',
-  'config.attrs.stage.character',
-  'config.attrs.globals'
+  'config.attrs.component.stage.direction.character',
+  'config.attrs'
 ];
 
 export default Component.extend(DirectableComponentMixin, TransitionableComponentMixin, TransitionableComponentAutoMixin, WindowResizeMixin, {
