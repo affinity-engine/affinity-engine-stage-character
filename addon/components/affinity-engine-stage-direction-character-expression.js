@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import multiton from 'ember-multiton-service';
-import { configurable, deepConfigurable } from 'affinity-engine';
+import { configurable, deepConfigurable, registrant } from 'affinity-engine';
 import { DirectableComponentMixin, TransitionableComponentMixin } from 'affinity-engine-stage';
 
 const {
@@ -11,8 +11,6 @@ const {
   observer,
   run
 } = Ember;
-
-const { inject: { service } } = Ember;
 
 const configurationTiers = [
   'directable.attrs',
@@ -26,9 +24,8 @@ export default Component.extend(DirectableComponentMixin, TransitionableComponen
   classNames: ['ae-stage-direction-character-expression-container'],
   hook: 'affinity_engine_stage_direction_expression',
 
-  translator: service('affinity-engine/translator'),
-
   config: multiton('affinity-engine/config', 'engineId'),
+  translator: registrant('affinity-engine/translator'),
 
   caption: configurable(configurationTiers, 'caption'),
   imageElement: configurable(configurationTiers, 'imageElement'),
