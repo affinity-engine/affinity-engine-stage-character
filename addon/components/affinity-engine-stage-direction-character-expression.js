@@ -64,9 +64,10 @@ export default Component.extend(DirectableComponentMixin, TransitionableComponen
 
   captionTranslation: computed('expression.id', 'caption', {
     get() {
-      const translation = get(this, 'caption') || `expressions.${get(this, 'expression.id')}`;
+      const caption = get(this, 'caption');
+      const translation = caption || `expressions.${get(this, 'expression.id')}`;
 
-      return get(this, 'translator').translate(translation);
+      return get(this, 'translator').translate(translation) || caption;
     }
   }),
 
