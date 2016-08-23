@@ -26,7 +26,7 @@ export default Scene.extend({
       id: 'bobo',
       name: 'Bobo',
       height: 90,
-      defaultExpression: 'emma-neutral'
+      keyframes: [{ id: 'emma-neutral' }]
     });
 
     await step();

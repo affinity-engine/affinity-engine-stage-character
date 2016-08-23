@@ -52,6 +52,7 @@
     "affinity-engine-stage direction"
   ],
   "dependencies": {
+    "affinity-engine-stage-direction-image": "git+https://github.com/affinity-engine/affinity-engine-stage-direction-image.git",
     "ember-cli-babel": "^5.1.6",
     "ember-cli-htmlbars": "^1.0.3"
   },
