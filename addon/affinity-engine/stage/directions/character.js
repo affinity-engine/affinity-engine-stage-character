@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import { configurable } from 'affinity-engine';
+import { cmd } from 'affinity-engine-stage';
 import { ImageDirection } from 'affinity-engine-stage-direction-image';
 
 const {
@@ -35,23 +36,15 @@ export default ImageDirection.extend({
     }
   }),
 
-  name(name) {
-    this._entryPoint();
-
+  name: cmd(function(name) {
     set(this, 'attrs.name', name);
+  }),
 
-    return this;
-  },
-
-  namePosition(namePosition) {
-    this._entryPoint();
-
+  namePosition: cmd(function(namePosition) {
     set(this, 'attrs.namePosition', namePosition);
+  }),
 
-    return this;
-  },
-
-  position(positions, duration = 0, options = {}) {
+  position: cmd(function(positions, duration = 0, options = {}) {
     const effect = positions.split(' ').reduce((aggregator, position) => {
       const nextEffectTier = Ember.A(get(this, '_configurationTiers')).find((tier) => {
         return get(this, `${tier}.positions.${position}`);
@@ -62,89 +55,13 @@ export default ImageDirection.extend({
     }, {});
 
     this.transition(effect, duration, options);
+  }),
 
-    return this;
-  },
-
-  pose(pose, transition) {
+  pose: cmd(function(pose, transition) {
     this.keyframe({ pose }, transition);
+  }),
 
-    return this;
-  },
-
-  expression(expression, transition) {
+  expression: cmd(function(expression, transition) {
     this.keyframe({ expression }, transition);
-
-    return this;
-  }
-
-  // _setup(fixtureOrId) {
-  //   this._entryPoint();
-  //
-  //   const fixtureStore = get(this, 'fixtureStore');
-  //   const fixture = typeOf(fixtureOrId) === 'object' ? fixtureOrId : fixtureStore.find('characters', fixtureOrId);
-  //   const id = get(fixture, 'id');
-  //   const expressionFixtureOrId = get(fixture, 'defaultExpression');
-  //
-  //   set(this, 'attrs.fixture', fixture);
-  //   set(this, 'id', id);
-  //
-  //   this.initialExpression(expressionFixtureOrId);
-  //
-  //   if (isEmpty(get(this, '_$instance'))) {
-  //     const transition = { type: 'transition', queue: 'main' };
-  //
-  //     get(this, 'attrs.transitions').pushObject(transition);
-  //     set(this, 'hasDefaultTransition', true);
-  //   }
-  //
-  //   return this;
-  // },
-
-  // expression(fixtureOrId, options = {}) {
-  //   if (get(this, 'hasDefaultTransition')) {
-  //     return this.initialExpression(fixtureOrId);
-  //   } else {
-  //     return this._changeExpression(fixtureOrId, options);
-  //   }
-  // },
-  //
-  // _changeExpression(fixtureOrId, options) {
-  //   this._removeDefaultTransition();
-  //   this._entryPoint();
-  //
-  //   const transitions = get(this, 'attrs.transitions');
-  //   const expression = this._findExpression(fixtureOrId);
-  //
-  //   transitions.pushObject(merge({ expression, type: 'crossFade', queue: 'expression' }, options));
-  //
-  //   return this;
-  // },
-  //
-  // initialExpression(expressionFixtureOrId) {
-  //   const fixture = this._findExpression(expressionFixtureOrId);
-  //
-  //   set(this, 'attrs.expression', fixture);
-  //
-  //   return this;
-  // },
-
-  // _handleChain: on('willChainDirection', function(name) {
-  //   if (name === 'text') {
-  //     this._removeFromQueueIfDefault();
-  //   }
-  // }),
-
-  // _removeDefaultTransition() {
-  //   if (get(this, 'hasDefaultTransition')) {
-  //     set(this, 'hasDefaultTransition', false);
-  //     set(this, 'attrs.transitions', Ember.A());
-  //   }
-  // },
-  //
-  // _removeFromQueueIfDefault() {
-  //   if (get(this, 'hasDefaultTransition')) {
-  //     get(this, 'queue').removeObject(this);
-  //   }
-  // }
+  })
 });
