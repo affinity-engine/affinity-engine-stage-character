@@ -19,10 +19,16 @@ export default ImageDirection.extend({
     'attrs',
     'attrs.keyframe',
     'attrs.keyframeParent',
+    'links.attrs',
     'config.attrs.component.stage.direction.character',
     'config.attrs.component.stage.direction.image',
     'config.attrs.component.stage',
     'config.attrs'
+  ],
+
+  _linkedAttrs: [
+    'name',
+    'namePosition'
   ],
 
   _directableDefinition: computed('_baseImageDirectableDefinition', '_configurationTiers', {
