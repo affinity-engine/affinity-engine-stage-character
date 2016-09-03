@@ -20,6 +20,8 @@ export default ImageDirection.extend({
     'attrs.keyframe',
     'attrs.keyframeParent',
     'links.attrs',
+    'links.fixtures.character',
+    'links.fixtures.image',
     'config.attrs.component.stage.direction.character',
     'config.attrs.component.stage.direction.image',
     'config.attrs.component.stage',
