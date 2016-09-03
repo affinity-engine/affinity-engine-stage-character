@@ -28,11 +28,6 @@ export default ImageDirection.extend({
     'config.attrs'
   ],
 
-  _linkedAttrs: [
-    'name',
-    'namePosition'
-  ],
-
   _directableDefinition: computed('_baseImageDirectableDefinition', '_configurationTiers', {
     get() {
       const configurationTiers = get(this, '_configurationTiers');
