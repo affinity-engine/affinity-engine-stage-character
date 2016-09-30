@@ -3,7 +3,9 @@ import { LXLTag } from 'ember-letter-by-letter';
 
 const {
   get,
-  isPresent
+  getProperties,
+  isPresent,
+  setProperties
 } = Ember;
 
 const { RSVP: { resolve } } = Ember;
@@ -19,6 +21,15 @@ export default LXLTag.extend({
   */
 
   open(...args) {
+    const character = get(args[0], 'links.character');
+
+    if (isPresent(character)) {
+      setProperties(this, {
+        character,
+        previousExpression: get(character, 'attrs.currentExpression')
+      });
+    }
+
     return this.execute(...args);
   },
 
@@ -34,7 +45,11 @@ export default LXLTag.extend({
   execute(lxlContainer, [expression, transition]) {
     const character = get(lxlContainer, 'links.character');
 
-    return isPresent(character) ? character.expression(expression, transition) : resolve();
+    if (isPresent(character)) {
+      character.expression(expression, transition);
+    }
+
+    return resolve();
   },
 
   /**
@@ -47,6 +62,12 @@ export default LXLTag.extend({
   */
 
   close() {
+    const { character, previousExpression } = getProperties(this, 'character', 'previousExpression');
+
+    if (isPresent(character) && isPresent(previousExpression)) {
+      character.expression(previousExpression);
+    }
+
     return resolve();
   }
 });

@@ -39,6 +39,12 @@ export default ImageDirection.extend({
     }
   }),
 
+  init(...args) {
+    this._super(...args);
+
+    set(this, 'attrs.currentExpression', 'default');
+  },
+
   name: cmd(function(name) {
     set(this, 'attrs.name', name);
   }),
@@ -65,6 +71,8 @@ export default ImageDirection.extend({
   }),
 
   expression: cmd(function(expression, transition) {
+    set(this, 'attrs.currentExpression', expression);
+
     this.keyframe({ expression }, transition);
   })
 });
