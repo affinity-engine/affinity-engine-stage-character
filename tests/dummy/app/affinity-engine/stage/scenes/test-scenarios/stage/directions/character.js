@@ -31,15 +31,15 @@ export default Scene.extend({
     });
 
     yield step();
-    const bitsy3 = yield script.character('bitsy').position('center');
+    const bitsy3 = yield script.character('bitsy').position('dummy1');
 
     yield step();
-    yield bitsy3.position('left nudgeDown');
+    yield bitsy3.position('dummy2 dummy3');
 
     yield step();
-    const bitsy4 = yield script.character('bitsy').expression('happy').position('center');
+    const bitsy4 = yield script.character('bitsy').expression('happy').position('dummy1');
 
     yield step();
-    yield bitsy4.expression('sad').position('right');
+    yield bitsy4.expression('sad').position('dummy2');
   })
 });

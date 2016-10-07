@@ -14,7 +14,7 @@ moduleForAcceptance('Acceptance | affinity-engine/stage/directions/character', {
 });
 
 test('Affinity Engine | Director | Directions | character', function(assert) {
-  assert.expect(17);
+  assert.expect(18);
 
   visit('/affinity-engine/test-scenarios/stage/directions/character').then(() => {
     assert.equal(Ember.$(`${hook('affinity_engine_stage_direction_image')} img`).attr('alt'), 'Bitsy', '`alt` is set by the fixture `caption`');
@@ -49,14 +49,15 @@ test('Affinity Engine | Director | Directions | character', function(assert) {
     return step(75);
   }).then(() => {
     assert.equal($hook('affinity_engine_stage_direction_image').length, 5, 'characters are rendered with `position`');
-    assert.equal(Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(4)`).children(hook('ember_animation_box')).css('left'), '50%', '`position` positions the character');
+    assert.equal(Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(4)`).children(hook('ember_animation_box')).css('margin'), '10px', '`position` positions the character');
 
     return step(150);
   }).then(() => {
     const $bitsy4 = Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(4)`).children(hook('ember_animation_box'));
 
-    assert.equal($bitsy4.css('left'), '20%', '`position` can accept multiple positions, Y');
-    assert.equal($bitsy4.css('bottom'), '-5%', '`position` can accept multiple positions, X');
+    assert.equal($bitsy4.css('margin'), '10px', '`position` can accept multiple positions, margin');
+    assert.equal($bitsy4.css('padding'), '15px', '`position` can accept multiple positions, padding');
+    assert.equal(parseFloat($bitsy4.css('opacity')).toFixed(1), 0.7, '`position` can accept multiple positions, opacity');
 
     return step(75);
   }).then(() => {
@@ -65,6 +66,6 @@ test('Affinity Engine | Director | Directions | character', function(assert) {
     return step(150);
   }).then(() => {
     assert.ok(Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(5) img`).attr('src').match('engine/characters/bitsy/sad.png'), '`expression` can adjust the expression after rendering');
-    assert.equal(Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(5)`).children(hook('ember_animation_box')).css('left'), '80%', '`position` can be chained after expression');
+    assert.equal(Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(5)`).children(hook('ember_animation_box')).css('margin'), '10px', '`position` can be chained after expression');
   });
 });
