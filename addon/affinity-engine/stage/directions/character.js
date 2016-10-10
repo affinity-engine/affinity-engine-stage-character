@@ -7,7 +7,6 @@ const {
   assign,
   computed,
   get,
-  isBlank,
   set
 } = Ember;
 
@@ -67,23 +66,7 @@ export default ImageDirection.extend({
     this.transition(effect, duration, options);
   }),
 
-  pose: cmd(function(pose, transition) {
-    this.keyframe({ pose }, transition);
-  }),
-
-  expression: cmd(function(expression, duration = 750) {
-    set(this, 'attrs.currentExpression', expression);
-
-    const transition = this._generateCrossFade({});
-
-    if (isBlank(transition.crossFade.in.duration)) {
-      transition.crossFade.in.duration = 0;
-    }
-
-    if (isBlank(transition.crossFade.out.duration)) {
-      transition.crossFade.out.duration = duration;
-    }
-
-    this.keyframe({ expression }, transition);
+  expression: cmd(function(...args) {
+    this.compose(...args);
   })
 });

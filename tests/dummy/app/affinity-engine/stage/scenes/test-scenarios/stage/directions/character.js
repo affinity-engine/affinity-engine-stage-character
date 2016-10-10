@@ -24,10 +24,14 @@ export default Scene.extend({
 
     yield step();
     yield script.character({
-      id: 'bobo',
       name: 'Bobo',
       height: 90,
-      keyframes: [{ id: 'emma-neutral' }]
+      layerOrder: ['base'],
+      compositions: {
+        default: {
+          base: 'emma-neutral'
+        }
+      }
     });
 
     yield step();

@@ -2,20 +2,26 @@ export default [{
   id: 'bitsy',
   name: 'Bitsy',
   height: 70,
-  keyframes: [{
-    id: 'bitsy-neutral'
-  }, {
-    id: 'bitsy-happy',
-    expression: 'happy'
-  }, {
-    id: 'bitsy-sad',
-    expression: 'sad'
-  }]
+  layerOrder: ['base'],
+  compositions: {
+    default: {
+      base: 'bitsy-neutral'
+    },
+    happy: {
+      base: 'bitsy-happy'
+    },
+    sad: {
+      base: 'bitsy-sad'
+    }
+  }
 }, {
   id: 'emma',
   name: 'Emma',
   height: 90,
-  keyframes: [{
-    id: 'emma-neutral'
-  }]
+  layerOrder: ['base'],
+  compositions: {
+    default: {
+      base: 'emma-neutral'
+    }
+  }
 }];

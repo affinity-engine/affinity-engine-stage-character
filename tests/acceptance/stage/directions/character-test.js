@@ -14,10 +14,9 @@ moduleForAcceptance('Acceptance | affinity-engine/stage/directions/character', {
 });
 
 test('Affinity Engine | Director | Directions | character', function(assert) {
-  assert.expect(18);
+  assert.expect(17);
 
   visit('/affinity-engine/test-scenarios/stage/directions/character').then(() => {
-    assert.equal(Ember.$(`${hook('affinity_engine_stage_direction_image')} img`).attr('alt'), 'Bitsy', '`alt` is set by the fixture `caption`');
     assert.ok(Ember.$(`${hook('affinity_engine_stage_direction_image')} img`).attr('src').match('engine/characters/bitsy/neutral.png'), 'it sets the `src` based on the associated fixture expression');
 
     return step(75);
