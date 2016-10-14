@@ -14,7 +14,7 @@ moduleForAcceptance('Acceptance | affinity-engine/stage/directions/character', {
 });
 
 test('Affinity Engine | Director | Directions | character', function(assert) {
-  assert.expect(17);
+  assert.expect(15);
 
   visit('/affinity-engine/test-scenarios/stage/directions/character').then(() => {
     assert.ok(Ember.$(`${hook('affinity_engine_stage_direction_image')} img`).attr('src').match('engine/characters/bitsy/neutral.png'), 'it sets the `src` based on the associated fixture expression');
@@ -42,17 +42,12 @@ test('Affinity Engine | Director | Directions | character', function(assert) {
 
     return step(75);
   }).then(() => {
-    assert.equal($hook('affinity_engine_stage_direction_image').length, 4, '`character` can be passed a fixture directly');
-    assert.ok(Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(3) img`).attr('src').match('engine/characters/emma/neutral.png'), 'the manually defined character defaultExpressionId is set properly');
-
-    return step(75);
-  }).then(() => {
-    assert.equal($hook('affinity_engine_stage_direction_image').length, 5, 'characters are rendered with `position`');
-    assert.equal(Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(4)`).children(hook('ember_animation_box')).css('margin'), '10px', '`position` positions the character');
+    assert.equal($hook('affinity_engine_stage_direction_image').length, 4, 'characters are rendered with `position`');
+    assert.equal(Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(3)`).children(hook('ember_animation_box')).css('margin'), '10px', '`position` positions the character');
 
     return step(150);
   }).then(() => {
-    const $bitsy4 = Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(4)`).children(hook('ember_animation_box'));
+    const $bitsy4 = Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(3)`).children(hook('ember_animation_box'));
 
     assert.equal($bitsy4.css('margin'), '10px', '`position` can accept multiple positions, margin');
     assert.equal($bitsy4.css('padding'), '15px', '`position` can accept multiple positions, padding');
@@ -60,11 +55,11 @@ test('Affinity Engine | Director | Directions | character', function(assert) {
 
     return step(75);
   }).then(() => {
-    assert.ok(Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(5) img`).attr('src').match('engine/characters/bitsy/happy.png'), '`expression` can adjust the expression before rendering');
+    assert.ok(Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(4) img`).attr('src').match('engine/characters/bitsy/happy.png'), '`expression` can adjust the expression before rendering');
 
     return step(150);
   }).then(() => {
-    assert.ok(Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(5) img`).attr('src').match('engine/characters/bitsy/sad.png'), '`expression` can adjust the expression after rendering');
-    assert.equal(Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(5)`).children(hook('ember_animation_box')).css('margin'), '10px', '`position` can be chained after expression');
+    assert.ok(Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(4) img`).attr('src').match('engine/characters/bitsy/sad.png'), '`expression` can adjust the expression after rendering');
+    assert.equal(Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(4)`).children(hook('ember_animation_box')).css('margin'), '10px', '`position` can be chained after expression');
   });
 });

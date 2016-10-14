@@ -66,7 +66,15 @@ export default ImageDirection.extend({
     this.transition(effect, duration, options);
   }),
 
-  expression: cmd(function(...args) {
-    this.compose(...args);
+  pose: cmd(function(pose) {
+    this.compose({ pose });
+  }),
+
+  expression: cmd(function(expression) {
+    this.compose({ expression });
+  }),
+
+  outfit: cmd(function(outfit) {
+    this.compose({ outfit });
   })
 });
