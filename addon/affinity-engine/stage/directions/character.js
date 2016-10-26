@@ -53,19 +53,6 @@ export default ImageDirection.extend({
     set(this, 'attrs.namePosition', namePosition);
   }),
 
-  position: cmd(function(positions, duration = 0, options = {}) {
-    const effect = positions.split(' ').reduce((aggregator, position) => {
-      const nextEffectTier = Ember.A(get(this, '_configurationTiers')).find((tier) => {
-        return get(this, `${tier}.positions.${position}`);
-      });
-      const nextEffect = get(this, `${nextEffectTier}.positions.${position}`);
-
-      return assign(aggregator, nextEffect);
-    }, {});
-
-    this.transition(effect, duration, options);
-  }),
-
   pose: cmd(function(pose) {
     this.compose({ pose });
   }),
