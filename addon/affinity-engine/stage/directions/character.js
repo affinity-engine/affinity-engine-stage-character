@@ -25,7 +25,7 @@ export default ImageDirection.extend({
     'config.attrs.component.stage.direction.character',
     'config.attrs.component.stage.direction.image',
     'config.attrs.component.stage',
-    'config.attrs'
+    'config.attrs.global'
   ],
 
   _directableDefinition: computed('_baseImageDirectableDefinition', '_configurationTiers', {

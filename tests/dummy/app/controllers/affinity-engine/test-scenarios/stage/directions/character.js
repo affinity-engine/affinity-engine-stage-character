@@ -6,7 +6,9 @@ const { Controller } = Ember;
 
 export default Controller.extend({
   config: {
-    animationLibrary: 'velocity',
+    global: {
+      animationLibrary: 'velocity'
+    },
     component: {
       stage: {
         direction: {
