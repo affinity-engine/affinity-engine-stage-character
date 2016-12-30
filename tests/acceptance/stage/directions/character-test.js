@@ -16,6 +16,8 @@ moduleForAcceptance('Acceptance | affinity-engine/stage/directions/character', {
 test('Affinity Engine | Director | Directions | character', function(assert) {
   assert.expect(15);
 
+  const done = assert.async();
+
   visit('/affinity-engine/test-scenarios/stage/directions/character').then(() => {
     assert.ok(Ember.$(`${hook('affinity_engine_stage_direction_image')} img`).attr('src').match('engine/characters/bitsy/neutral.png'), 'it sets the `src` based on the associated fixture expression');
 
@@ -61,5 +63,7 @@ test('Affinity Engine | Director | Directions | character', function(assert) {
   }).then(() => {
     assert.ok(Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(4) img`).attr('src').match('engine/characters/bitsy/sad.png'), '`expression` can adjust the expression after rendering');
     assert.equal(Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(4)`).children(hook('ember_animation_box')).css('margin'), '10px', '`position` can be chained after expression');
+
+    done();
   });
 });

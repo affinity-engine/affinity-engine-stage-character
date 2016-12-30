@@ -29,9 +29,9 @@ export default Scene.extend({
     yield bitsy3.position('dummy2 dummy3');
 
     yield step();
-    const bitsy4 = yield script.character('bitsy').state('happy').position('dummy1');
+    const bitsy4 = yield script.character('bitsy').expression('happy').position('dummy1');
 
     yield step();
-    yield bitsy4.state('sad').position('dummy2');
+    yield bitsy4.expression('sad').position('dummy2');
   })
 });

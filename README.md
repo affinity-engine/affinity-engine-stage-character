@@ -3,4 +3,4 @@
 
 # affinity-engine-stage-direction-character
 
-You'll find the interactive guides [here](http://www.ember.engine/learn/stage/directions/character).
+You'll find the interactive guides [here](http://www.affinityengine.org/components/stage/directions/character).

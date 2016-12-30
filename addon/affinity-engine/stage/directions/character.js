@@ -54,14 +54,14 @@ export default ImageDirection.extend({
   }),
 
   pose: cmd(function(pose) {
-    this.state({ pose });
+    get(this, '_state') ? this.state({ pose }) : this.keyframe(pose);
   }),
 
   expression: cmd(function(expression) {
-    this.state({ expression });
+    get(this, '_state') ? this.state({ expression }) : this.keyframe(expression);
   }),
 
   outfit: cmd(function(outfit) {
-    this.state({ outfit });
+    get(this, '_state') ? this.state({ outfit }) : this.keyframe(outfit);
   })
 });
