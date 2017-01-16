@@ -8,9 +8,7 @@ export default {
             name: 'name',
             namePosition: 'namePosition'
           },
-          classNames: {
-            base: 'ae-figure'
-          }
+          renderMethod: 'figure'
         }
       }
     }
