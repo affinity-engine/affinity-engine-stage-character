@@ -53,15 +53,15 @@ export default ImageDirection.extend({
     set(this, 'attrs.namePosition', namePosition);
   }),
 
-  pose: cmd(function(pose) {
-    get(this, '_state') ? this.state({ pose }) : this.keyframe(pose);
+  pose: cmd(function(pose, durationOrTransition, twoWayFade = true) {
+    get(this, '_state') ? this.state({ pose }, durationOrTransition, twoWayFade) : this.keyframe(pose);
   }),
 
-  expression: cmd(function(expression) {
-    get(this, '_state') ? this.state({ expression }) : this.keyframe(expression);
+  expression: cmd(function(expression, durationOrTransition, twoWayFade) {
+    get(this, '_state') ? this.state({ expression }, durationOrTransition, twoWayFade) : this.keyframe(expression);
   }),
 
-  outfit: cmd(function(outfit) {
-    get(this, '_state') ? this.state({ outfit }) : this.keyframe(outfit);
+  outfit: cmd(function(outfit, durationOrTransition, twoWayFade) {
+    get(this, '_state') ? this.state({ outfit }, durationOrTransition, twoWayFade) : this.keyframe(outfit);
   })
 });
