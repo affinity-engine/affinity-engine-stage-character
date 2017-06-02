@@ -13,7 +13,7 @@ const {
 export default ImageDirection.extend({
   componentPath: 'affinity-engine-stage-direction-image',
   keyframeParentCategory: 'characters',
-  layer: 'engine.stage.foreground.character',
+  layer: 'engine.stage.foreground.image',
 
   _configurationTiers: [
     'attrs',
