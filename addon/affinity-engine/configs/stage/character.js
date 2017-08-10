@@ -4,10 +4,6 @@ export default {
     stage: {
       direction: {
         character: {
-          _linkedAttrs: {
-            name: 'name',
-            namePosition: 'namePosition'
-          },
           renderMethod: 'figure'
         }
       }

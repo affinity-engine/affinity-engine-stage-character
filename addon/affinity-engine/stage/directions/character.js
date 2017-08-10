@@ -1,13 +1,9 @@
 import Ember from 'ember';
-import { configurable } from 'affinity-engine';
 import { cmd } from 'affinity-engine-stage';
 import { ImageDirection } from 'affinity-engine-stage-direction-image';
 
 const {
-  assign,
-  computed,
-  get,
-  set
+  get
 } = Ember;
 
 export default ImageDirection.extend({
@@ -16,42 +12,19 @@ export default ImageDirection.extend({
   layer: 'engine.stage.foreground.image',
 
   _configurationTiers: [
-    'attrs',
-    'attrs.keyframe',
-    'attrs.keyframeParent',
-    'links.attrs',
-    'links.fixtures.character',
-    'links.fixtures.image',
-    'config.attrs.component.stage.direction.character',
-    'config.attrs.component.stage.direction.image',
-    'config.attrs.component.stage',
-    'config.attrs.global'
+    'global',
+    'component.stage',
+    'image',
+    'component.stage.direction.image',
+    'character',
+    'component.stage.direction.character'
   ],
-
-  _directableDefinition: computed('_baseImageDirectableDefinition', '_configurationTiers', {
-    get() {
-      const configurationTiers = get(this, '_configurationTiers');
-
-      return assign({
-        name: configurable(configurationTiers, 'name'),
-        namePosition: configurable(configurationTiers, 'namePosition')
-      }, get(this, '_baseImageDirectableDefinition'));
-    }
-  }),
 
   init(...args) {
     this._super(...args);
 
-    set(this, 'attrs.currentExpression', 'default');
+    this.configure('currentExpression', 'default');
   },
-
-  name: cmd(function(name) {
-    set(this, 'attrs.name', name);
-  }),
-
-  namePosition: cmd(function(namePosition) {
-    set(this, 'attrs.namePosition', namePosition);
-  }),
 
   pose: cmd(function(pose, durationOrTransition, twoWayFade = true) {
     get(this, '_state') ? this.state({ pose }, durationOrTransition, twoWayFade) : this.keyframe(pose);
