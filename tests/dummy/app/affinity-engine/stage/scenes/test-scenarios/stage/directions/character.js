@@ -8,16 +8,16 @@ export default Scene.extend({
     const bitsy = script.character('bitsy');
 
     yield step();
-    bitsy.transition({ opacity: 0.2 });
+    bitsy.transition({ effect: { opacity: 0.2 } });
 
     yield step();
-    yield bitsy.transition({ opacity: 0.3 }).transition({ opacity: 0.4 }).transition({ opacity: 0.5 });
+    yield bitsy.transition({ effect: { opacity: 0.3 } }).transition({ effect: { opacity: 0.4 } }).transition({ effect: { opacity: 0.5 } });
 
     yield step();
     const bitsy2 = yield script.character('bitsy');
 
     yield step();
-    yield bitsy2.transition({ opacity: 0.6 });
+    yield bitsy2.transition({ effect: { opacity: 0.6 } });
 
     yield step();
     yield script.character('emma');
