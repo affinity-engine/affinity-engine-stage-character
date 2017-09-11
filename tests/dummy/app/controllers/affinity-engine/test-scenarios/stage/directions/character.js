@@ -6,27 +6,29 @@ const { Controller } = Ember;
 
 export default Controller.extend({
   config: {
-    global: {
-      animationLibrary: 'velocity'
+    children: {
+      animator: 'velocity'
     },
     component: {
       stage: {
         direction: {
           character: {
-            classNames: {
-              base: 'ae-figure',
-              decorative: null,
-              structural: null
-            },
-            positions: {
-              dummy1: {
-                margin: '10px'
+            attrs: {
+              classNames: {
+                base: 'ae-figure',
+                decorative: null,
+                structural: null
               },
-              dummy2: {
-                padding: '15px'
-              },
-              dummy3: {
-                opacity: 0.7
+              positions: {
+                dummy1: {
+                  margin: '10px'
+                },
+                dummy2: {
+                  padding: '15px'
+                },
+                dummy3: {
+                  opacity: 0.7
+                }
               }
             }
           }

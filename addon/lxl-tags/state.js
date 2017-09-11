@@ -22,7 +22,7 @@ export default LXLTag.extend({
   */
 
   open(...args) {
-    const character = get(args[0], 'links.character');
+    const character = get(args[0], 'linkedDirections.character');
 
     if (isPresent(character)) {
       setProperties(this, {
@@ -44,7 +44,7 @@ export default LXLTag.extend({
   */
 
   execute(lxlContainer, [stateOrKey, value]) {
-    const character = get(lxlContainer, 'links.character');
+    const character = get(lxlContainer, 'linkedDirections.character');
     const state = typeOf(stateOrKey) === 'string' ? { [stateOrKey]: value } : stateOrKey;
 
     if (isPresent(character)) {

@@ -9,15 +9,15 @@ const {
 export default ImageDirection.extend({
   componentPath: 'affinity-engine-stage-direction-image',
   keyframeParentCategory: 'characters',
-  layer: 'engine.stage.foreground.image',
 
   _configurationTiers: [
-    'global',
-    'component.stage',
-    'image',
-    'component.stage.direction.image',
+    'component.stage.direction.character',
     'character',
-    'component.stage.direction.character'
+    'component.stage.direction.image',
+    'image',
+    'component.stage.direction.every',
+    'component.stage.every',
+    'children'
   ],
 
   init(...args) {
