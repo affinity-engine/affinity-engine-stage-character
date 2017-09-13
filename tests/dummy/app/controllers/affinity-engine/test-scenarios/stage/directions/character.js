@@ -6,7 +6,7 @@ const { Controller } = Ember;
 
 export default Controller.extend({
   config: {
-    children: {
+    all: {
       animator: 'velocity'
     },
     component: {

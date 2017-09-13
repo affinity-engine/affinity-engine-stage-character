@@ -1,6 +1,6 @@
 {
   "name": "affinity-engine-stage-direction-character",
-  "version": "0.2.0",
+  "version": "0.2.3",
   "description": "Add characters to Affinity Engine Stage",
   "keywords": [
     "ember-addon",
